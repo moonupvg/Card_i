@@ -1,0 +1,8 @@
+change the rectangle to a 2d card shape with the size of 180x252 px. 
+the front color is red. the back color is blue.
+
+update the code before.
+change the rectangle to a 2d card shape with the size of 180x252 px. 
+the front of the card has a picture of a dog.
+the back of the card is yellow.
+the card can only rotate on x axis.
