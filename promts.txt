@@ -6,3 +6,20 @@ change the rectangle to a 2d card shape with the size of 180x252 px.
 the front of the card has a picture of a dog.
 the back of the card is yellow.
 the card can only rotate on x axis.
+
+
+
+update the code before.
+the front of the card is red with black border.
+the card can only rotate on y axis.
+the card can be rotated only by mouse wheel.
+
+
+update the code before.
+make the rotation smoother.
+
+
+
+update the code before.
+add a slider underneath the card which rotates the card from 0 to 360 degrees.
+update the rotation of mousewheel to 10degree per rotation.
