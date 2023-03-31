@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Define the card container */
+      .card {
+        position: relative;
+        width: 180px;
+        height: 252px;
+        margin: 100px auto;
+        background-color: yellow;
+        transform-style: preserve-3d;
+        transition: transform 0.5s ease;
+      }
+      
+      /* Define the front face of the card */
+      .card-front {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://via.placeholder.com/180x252"); /* Replace this with the image of the dog */
+        background-size: cover;
+        backface-visibility: hidden;
+      }
+      
+      /* Define the back face of the card */
+      .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: yellow;
+        transform: rotateX(180deg);
+        backface-visibility: hidden;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="card" onmousedown="mouseDown(event)">
+      <div class="card-front"></div>
+      <div class="card-back"></div>
+    </div>
+    
+    <script>
+      let isDragging = false;
+      let startX;
+      let rotationX = 0;
+      
+      function mouseDown(event) {
+        isDragging = true;
+        startX = event.clientX;
+        document.addEventListener('mousemove', mouseMove);
+        document.addEventListener('mouseup', mouseUp);
+      }
+      
+      function mouseMove(event) {
+        if (!isDragging) {
+          return;
+        }
+        
+        let deltaX = event.clientX - startX;
+        
+        rotationX += deltaX;
+        
+        updateRotation();
+      }
+      
+      function mouseUp(event) {
+        isDragging = false;
+        
+        document.removeEventListener('mousemove', mouseMove);
+        document.removeEventListener('mouseup', mouseUp);
+      }
+      
+      function updateRotation() {
+        let card = document.querySelector('.card');
+        card.style.transform = `rotateX(${rotationX}deg)`;
+      }
+    </script>
+  </body>
+</html>
