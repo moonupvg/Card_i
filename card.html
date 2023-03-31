@@ -9,6 +9,7 @@
         height: 252px;
         margin: 100px auto;
         background-color: yellow;
+        border: 2px solid black;
         transform-style: preserve-3d;
         transition: transform 0.5s ease;
       }
@@ -18,8 +19,7 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background-image: url("https://via.placeholder.com/180x252"); /* Replace this with the image of the dog */
-        background-size: cover;
+        background-color: red;
         backface-visibility: hidden;
       }
       
@@ -29,52 +29,34 @@
         width: 100%;
         height: 100%;
         background-color: yellow;
-        transform: rotateX(180deg);
+        transform: rotateY(180deg);
         backface-visibility: hidden;
       }
     </style>
   </head>
   
   <body>
-    <div class="card" onmousedown="mouseDown(event)">
+    <div class="card" onwheel="mouseWheel(event)">
       <div class="card-front"></div>
       <div class="card-back"></div>
     </div>
     
     <script>
-      let isDragging = false;
-      let startX;
-      let rotationX = 0;
+      let rotationY = 0;
       
-      function mouseDown(event) {
-        isDragging = true;
-        startX = event.clientX;
-        document.addEventListener('mousemove', mouseMove);
-        document.addEventListener('mouseup', mouseUp);
-      }
-      
-      function mouseMove(event) {
-        if (!isDragging) {
-          return;
-        }
+      function mouseWheel(event) {
+        event.preventDefault();
         
-        let deltaX = event.clientX - startX;
+        let delta = event.deltaY;
         
-        rotationX += deltaX;
+        rotationY += delta;
         
         updateRotation();
       }
       
-      function mouseUp(event) {
-        isDragging = false;
-        
-        document.removeEventListener('mousemove', mouseMove);
-        document.removeEventListener('mouseup', mouseUp);
-      }
-      
       function updateRotation() {
         let card = document.querySelector('.card');
-        card.style.transform = `rotateX(${rotationX}deg)`;
+        card.style.transform = `rotateY(${rotationY}deg)`;
       }
     </script>
   </body>
